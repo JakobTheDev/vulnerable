@@ -1,10 +1,11 @@
+// Angular imports
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'vulnerable-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'vulnerable-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'vulnerable';
+    title = 'Vulnerable';
 }
