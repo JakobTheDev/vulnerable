@@ -12,7 +12,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class BreadcrumbsComponent implements OnInit {
 
     // Totally safe HTML
-    protected html: SafeHtml;
+    html: SafeHtml;
 
     constructor(
         private _domSanitizer: DomSanitizer,
