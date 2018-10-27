@@ -10,6 +10,7 @@ phases:
             - echo Installing source NPM dependencies...
             - npm install
             - npm install -g @angular/cli
+            - npm install -g snyk
     pre_build:
         commands:
             - echo Testing vulnerabilities in NPM dependencies...
