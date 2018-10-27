@@ -1,0 +1,13 @@
+<div class="clr-row">
+    <div class="clr-col-auto">
+        <span>xss</span>
+    </div>
+
+    <div class="clr-col-auto">
+        <span>/</span>
+    </div>
+
+    <div class="clr-col-auto">
+        <div #definitely_no_xss [innerHTML]="html">Breadcrumbs</div>
+    </div>
+</div>
