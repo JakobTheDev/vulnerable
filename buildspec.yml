@@ -1,13 +1,19 @@
-version: 0.1
-environment_variables:
-    plaintext:
+version: 0.2
+env:
+    variables:
         S3_BUCKET: "vulnerable.pennington.io"
+    parameter-store:
+        SNYK_TOKEN: "SNYKAPIKey"
 phases:
     install:
         commands:
             - echo Installing source NPM dependencies...
             - npm install
             - npm install -g @angular/cli
+    pre_build:
+        commands:
+            - echo Testing vulnerabilities in NPM dependencies...
+            - snyk test
     build:
         commands:
             - echo Build started on `date`
