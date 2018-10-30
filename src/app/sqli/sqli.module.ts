@@ -1,6 +1,7 @@
 // Angular imports
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // App imports
 // Components
 import { EasyComponent } from './easy/easy.component';
@@ -10,8 +11,11 @@ import { SqliRoutingModule } from './sqli-routing.module';
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         SqliRoutingModule
     ],
-    declarations: [EasyComponent]
+    declarations: [EasyComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SqliModule { }
