@@ -8,6 +8,10 @@ const routes: Routes = [
         loadChildren: 'app/xss/xss.module#XssModule'
     },
     {
+        path: 'sqli',
+        loadChildren: 'app/sqli/sqli.module#SqliModule'
+    },
+    {
         path: '**',
         redirectTo: '/xss/breadcrumbs'
     }

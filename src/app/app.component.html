@@ -39,6 +39,15 @@
                         <li><a class="nav-link" routerLink="/xss/<a href='javascript:alert(%22Uh oh... 😢%22)'>Breadcrumbs 2">Breadcrumbs 2</a></li>
                     </ul>
                 </section>
+
+                <!-- SQLi -->
+                <section class="nav-group">
+                    <input id="nav-xss" type="checkbox">
+                    <label for="nav-xss">SQL Injection</label>
+                    <ul class="nav-list">
+                        <li><a class="nav-link" routerLink="/sqli/easy">Easy</a></li>
+                    </ul>
+                </section>
             </section>
         </nav>
 
