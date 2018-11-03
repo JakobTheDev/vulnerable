@@ -52,4 +52,8 @@ export class EasyComponent implements OnInit {
             });
     }
 
+    trackByFn(index: number, user: User): string {
+        return user.username;
+    }
+
 }
