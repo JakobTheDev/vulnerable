@@ -1,0 +1,68 @@
+<div class="clr-row">
+    <!-- Left column - Search Results -->
+    <div class="clr-col-6">
+
+        <!-- Heading -->
+        <div class="clr-row">
+            <div class="clr-col">
+                <h2>Easy SQL Injection</h2>
+            </div>
+        </div>
+
+        <!-- Search Box -->
+        <div class="clr-row">
+            <div class="clr-col">
+                <form clrForm [formGroup]="searchForm">
+                    <clr-input-container>
+                        <input id="input-search" clrInput type="text" placeholder="Search names" formControlName="search" />
+                    </clr-input-container>
+                </form>
+            </div>
+
+            <div class="clr-col-auto">
+                <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+            </div>
+        </div>
+
+        <!-- Results table -->
+        <table *ngIf="users.length" class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; trackBy: trackByFn">
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.address }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- Right Column - Response Payload -->
+    <div class="clr-col-6">
+        <!-- Heading -->
+        <div class="clr-row">
+            <div class="clr-col-12">
+                <h2>Response</h2>
+            </div>
+        </div>
+
+        <div *ngIf="response" class="clr-row">
+            <div class="clr-col-12">
+                <pre>{{ response | json:4 }}
+                </pre>
+            </div>
+        </div>
+
+    </div>
+</div>

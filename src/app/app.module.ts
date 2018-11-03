@@ -1,8 +1,10 @@
 // Angular imports
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { ClarityModule } from '@clr/angular';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { ClarityModule, ClrFormsNextModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { PrettyJsonModule } from 'angular2-prettyjson';
 // App imports
 // Components
 import { AppComponent } from './app.component';
@@ -15,11 +17,15 @@ import { AppRoutingModule } from './app-routing.module';
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
+        PrettyJsonModule,
         AppRoutingModule,
         ClarityModule,
+        ClrFormsNextModule,
         BrowserAnimationsModule
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

