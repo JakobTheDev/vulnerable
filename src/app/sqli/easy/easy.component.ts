@@ -48,7 +48,6 @@ export class EasyComponent implements OnInit {
                 this.response = response;
                 // Mark for change detection
                 this._ref.markForCheck();
-                console.log('Response', response);
             });
     }
 
