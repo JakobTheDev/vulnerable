@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    API_URL: 'http://localhost:3000',
+    // API_URL: 'http://localhost:3000',
+    API_URL: 'https://api.vulnerable.pennington.io',
     production: false
 };
 
