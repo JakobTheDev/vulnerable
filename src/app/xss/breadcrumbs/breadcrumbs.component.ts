@@ -22,9 +22,9 @@ export class BreadcrumbsComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this._activatedRoute.url.subscribe((something: Array<UrlSegment>) => {
+        this._activatedRoute.url.subscribe((urlSegment: Array<UrlSegment>) => {
             // Generate totally safe HTML from the current path
-            const path: string = something[0] ? something[0].path : 'breadcrumbs';
+            const path: string = urlSegment[urlSegment.length - 1].path;
             this.html = this._domSanitizer.bypassSecurityTrustHtml(path);
             // Force change detection
             this._ref.markForCheck();

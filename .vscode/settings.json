@@ -1,0 +1,7 @@
+{
+    "prettier.tabWidth": 4,
+    "prettier.tslintIntegration": true,
+    "prettier.singleQuote": true,
+    "prettier.useTabs": true,
+    "editor.detectIndentation": false
+}

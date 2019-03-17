@@ -7,8 +7,16 @@ import { BreadcrumbsComponent } from 'app/xss/breadcrumbs/breadcrumbs.component'
 
 const routes: Routes = [
     {
-        path: '**',
+        path: 'breadcrumbs',
         component: BreadcrumbsComponent
+    },
+    {
+        path: 'breadcrumbs/:payload',
+        component: BreadcrumbsComponent
+    },
+    {
+        path: '**',
+        redirectTo: 'breadcrumbs'
     }
 ];
 
