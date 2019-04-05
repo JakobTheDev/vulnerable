@@ -1,0 +1,70 @@
+// Import global stylesheet
+@import '_variables.scss';
+
+.navbar {
+  // make the navbar draggable for frameless electron
+  -webkit-app-region: drag;
+  background-color: $base02;
+  height: 1.5rem;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  color: $base3;
+
+  // branding icon and title
+  .branding a {
+    // disable app region to enable click events
+    -webkit-app-region: no-drag;
+    padding: 0 0.5rem;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    // icon
+    img {
+      height: 1.2rem;
+      width: 1.2rem;
+      margin-right: 15px;
+    }
+
+    // title
+    span {
+      color: white;
+      padding-top: 2px;
+    }
+  }
+
+  // electron window controls
+  .controls {
+    // disable app region to enable click events
+    -webkit-app-region: no-drag;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+
+    div {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background-color: $base03;
+      }
+    }
+
+    // control icons
+    clr-icon {
+      height: 1.2rem;
+      width: 1.2rem;
+      margin: 0px 2px;
+      color: white;
+    }
+  }
+}

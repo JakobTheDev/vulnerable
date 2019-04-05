@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 // App imports
 // Components
 import { BreadcrumbsComponent } from 'app/xss/breadcrumbs/breadcrumbs.component';
+import { MarkdownComponent } from 'app/xss/markdown/markdown.component';
 
 const routes: Routes = [
     {
@@ -13,6 +14,10 @@ const routes: Routes = [
     {
         path: 'breadcrumbs/:payload',
         component: BreadcrumbsComponent
+    },
+    {
+        path: 'markdown',
+        component: MarkdownComponent
     },
     {
         path: '**',

@@ -1,5 +1,10 @@
 // Angular imports
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    OnInit
+} from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
@@ -10,7 +15,6 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadcrumbsComponent implements OnInit {
-
     // Totally safe HTML
     html: SafeHtml;
 
@@ -18,10 +22,9 @@ export class BreadcrumbsComponent implements OnInit {
         private _domSanitizer: DomSanitizer,
         private _ref: ChangeDetectorRef,
         private _activatedRoute: ActivatedRoute
-    ) { }
+    ) {}
 
     ngOnInit(): void {
-
         this._activatedRoute.url.subscribe((urlSegment: Array<UrlSegment>) => {
             // Generate totally safe HTML from the current path
             const path: string = urlSegment[urlSegment.length - 1].path;
@@ -29,7 +32,5 @@ export class BreadcrumbsComponent implements OnInit {
             // Force change detection
             this._ref.markForCheck();
         });
-
     }
-
 }
