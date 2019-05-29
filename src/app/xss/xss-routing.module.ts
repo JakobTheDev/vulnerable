@@ -17,8 +17,9 @@ const routes: Routes = [
         component: MarkdownComponent
     },
     {
-        path: '**',
-        redirectTo: 'breadcrumbs'
+        path: '',
+        redirectTo: 'breadcrumbs',
+        pathMatch: 'full'
     }
 ];
 
