@@ -1,0 +1,13 @@
+<div class="clr-row">
+    <ng-container *ngFor="let segment of urlSegments; let i = index">
+        <!-- breadcrumb divider -->
+        <div *ngIf="i" class="clr-col-auto">
+            <span>/</span>
+        </div>
+
+        <!-- breadcrumb link -->
+        <div class="clr-col-auto">
+            <div [innerHTML]="segment">Breadcrumbs</div>
+        </div>
+    </ng-container>
+</div>

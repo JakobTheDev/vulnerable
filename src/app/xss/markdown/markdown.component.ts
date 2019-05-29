@@ -1,31 +1,32 @@
-// Angular imports
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ChangeDetectorRef,
-  AfterViewInit
-} from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ElectronService } from 'app/shared/services/electron.service';
 
 @Component({
-  selector: 'vulnerable-markdown',
-  templateUrl: './markdown.component.html',
-  styleUrls: ['./markdown.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'vulnerable-markdown',
+    templateUrl: './markdown.component.html',
+    styleUrls: ['./markdown.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MarkdownComponent implements AfterViewInit {
-  // Demo markdown XXS payloads
-  // tslint:disable: no-trailing-whitespace
-  demoPayloads = `### Demo Markdown XSS Payloads
-  
+    // Demo XXS payloads
+    // tslint:disable: no-trailing-whitespace
+    demoPayloads: string = `### Demo Markdown XSS Payloads
+
 [Basic XSS](javascript:alert('Basic'))
 
-[What's in LocalStorage?](javascript:alert(JSON.stringify(localStorage)))  
+[What's in LocalStorage?](javascript:alert(JSON.stringify(localStorage)))
 
-[Case may bypass bad XSS filters](JaVaScRiPt:alert('CaseInsensitive'))  
+[Case may bypass bad XSS filters](JaVaScRiPt:alert('CaseInsensitive'))
 
 [URL](javascript://www.google.com%0Aalert('URL'))
+`;
 
+    /**
+     * demonstrative payloads for electron exploits
+     * only loaded if running in electron mode
+     */
+    demoElectronPayloads: string = `
 
 ### Electron Remote Code Execution Demo
 
@@ -41,17 +42,18 @@ export class MarkdownComponent implements AfterViewInit {
 
 `;
 
-  // Form controlling the markdown state
-  markdownForm = new FormGroup({
-    markdownTextarea: new FormControl(this.demoPayloads)
-  });
+    // Form controlling the markdown state
+    markdownForm: FormGroup = new FormGroup({
+        markdownTextarea: new FormControl(this.demoPayloads)
+    });
 
-  constructor(private _ref: ChangeDetectorRef) {}
+    constructor(public electronService: ElectronService, private readonly _ref: ChangeDetectorRef) {}
 
-  ngAfterViewInit(): void {
-    this.markdownForm.controls.markdownTextarea.setValue(this.demoPayloads);
-    this._ref.detectChanges();
-  }
+    ngAfterViewInit(): void {
+        if (this.electronService.isElectron()) {
+            this.demoPayloads = this.demoPayloads + this.demoElectronPayloads;
+        }
+        this.markdownForm.controls.markdownTextarea.setValue(this.demoPayloads);
+        this._ref.detectChanges();
+    }
 }
-
-

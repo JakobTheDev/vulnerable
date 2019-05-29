@@ -8,9 +8,9 @@
             </div>
         </div>
 
-        <!-- Markdown - txt area -->
-        <div [formGroup]="markdownForm" class="clr-row"> 
-            <textarea formControlName="markdownTextarea"  rows="25"></textarea>
+        <!-- Markdown - textarea -->
+        <div [formGroup]="markdownForm" class="clr-row">
+            <textarea formControlName="markdownTextarea" rows="25"></textarea>
         </div>
     </div>
 
@@ -23,10 +23,10 @@
             </div>
         </div>
 
-        <!-- Heading -->
+        <!-- Markdown - preview -->
         <div class="clr-row">
             <div class="clr-col">
-                <markdown [data]="(markdownForm.get('markdownTextarea').valueChanges | async)"></markdown>
+                <markdown [data]="markdownForm.get('markdownTextarea').valueChanges | async"></markdown>
             </div>
         </div>
     </div>

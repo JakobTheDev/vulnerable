@@ -1,8 +1,8 @@
 {
-  "productName": "vulnerable",
-  "directories": {
-    "output": "release/"
-  },
+    "productName": "vulnerable",
+    "directories": {
+        "output": "release/"
+    },
     "files": [
         "**/*",
         "!**/*.ts",
@@ -19,22 +19,16 @@
         "!tsconfig.json",
         "!tslint.json"
     ],
-  "win": {
-    "icon": "dist",
-    "target": [
-      "portable"
-    ]
-  },
-  "mac": {
-    "icon": "dist",
-    "target": [
-      "dmg"
-    ]
-  },
-  "linux": {
-    "icon": "dist",
-    "target": [
-      "AppImage"
-    ]
-  }
+    "win": {
+        "icon": "dist",
+        "target": ["portable"]
+    },
+    "mac": {
+        "icon": "dist",
+        "target": ["dmg"]
+    },
+    "linux": {
+        "icon": "dist",
+        "target": ["AppImage"]
+    }
 }

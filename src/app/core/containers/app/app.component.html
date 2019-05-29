@@ -1,0 +1,42 @@
+<div class="main-container">
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <!-- Branding -->
+        <div class="branding">
+            <a routerLink="/">
+                <img src="../assets/logo.png" />
+                <span>Vulnerable</span>
+            </a>
+        </div>
+
+        <!-- Controls - only show if in electron mode -->
+        <div *ngIf="electronService.isElectron()" class="controls">
+            <div (click)="onClickMinimise()">
+                <clr-icon shape="window-min"></clr-icon>
+            </div>
+            <div *ngIf="!isMaximized()" (click)="onClickMaximise()">
+                <clr-icon shape="window-max"></clr-icon>
+            </div>
+            <div *ngIf="isMaximized()" (click)="onClickUnmaximise()">
+                <clr-icon shape="window-restore"></clr-icon>
+            </div>
+            <div (click)="onClickClose()">
+                <clr-icon shape="window-close"></clr-icon>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content container -->
+    <div class="content-container">
+        <!-- Main Content -->
+        <div class="content-area">
+            <vulnerable-breadcrumbs></vulnerable-breadcrumbs>
+            <router-outlet></router-outlet>
+        </div>
+
+        <!-- Side navigation -->
+        <nav class="sidenav">
+            <vulnerable-app-sidebar></vulnerable-app-sidebar>
+        </nav>
+    </div>
+</div>

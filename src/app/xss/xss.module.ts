@@ -1,23 +1,22 @@
-// Angular imports
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'app/shared/shared.module';
 import { MarkdownModule } from 'ngx-markdown';
-// App imports
-// Components
-import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { BreadcrumbsDemoComponent } from './breadcrumbs-demo/breadcrumbs-demo.component';
 import { MarkdownComponent } from './markdown/markdown.component';
-// Modules
 import { XssRoutingModule } from './xss-routing.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    XssRoutingModule,
-    ReactiveFormsModule,
-    MarkdownModule.forChild()
-  ],
-  declarations: [BreadcrumbsComponent, MarkdownComponent]
+    imports: [
+        // load shared components, services etc.
+        SharedModule,
+        CommonModule,
+        FormsModule,
+        XssRoutingModule,
+        ReactiveFormsModule,
+        MarkdownModule.forChild()
+    ],
+    declarations: [BreadcrumbsDemoComponent, MarkdownComponent]
 })
 export class XssModule {}

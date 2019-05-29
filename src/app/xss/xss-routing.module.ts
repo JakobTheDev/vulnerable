@@ -1,19 +1,16 @@
-// Angular imports
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// App imports
-// Components
-import { BreadcrumbsComponent } from 'app/xss/breadcrumbs/breadcrumbs.component';
+import { BreadcrumbsDemoComponent } from 'app/xss/breadcrumbs-demo/breadcrumbs-demo.component';
 import { MarkdownComponent } from 'app/xss/markdown/markdown.component';
 
 const routes: Routes = [
     {
         path: 'breadcrumbs',
-        component: BreadcrumbsComponent
+        component: BreadcrumbsDemoComponent
     },
     {
         path: 'breadcrumbs/:payload',
-        component: BreadcrumbsComponent
+        component: BreadcrumbsDemoComponent
     },
     {
         path: 'markdown',
@@ -29,4 +26,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class XssRoutingModule { }
+export class XssRoutingModule {}

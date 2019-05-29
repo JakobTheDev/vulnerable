@@ -9,10 +9,6 @@ const routes: Routes = [
     {
         path: 'easy',
         component: EasyComponent
-    },
-    {
-        path: '**',
-        redirectTo: 'easy'
     }
 ];
 
@@ -20,4 +16,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class SqliRoutingModule { }
+export class SqliRoutingModule {}
