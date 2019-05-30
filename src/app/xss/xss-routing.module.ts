@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BreadcrumbsDemoComponent } from 'app/xss/breadcrumbs-demo/breadcrumbs-demo.component';
+import { FormsComponent } from 'app/xss/forms/forms.component';
 import { MarkdownComponent } from 'app/xss/markdown/markdown.component';
 
 const routes: Routes = [
@@ -13,12 +14,17 @@ const routes: Routes = [
         component: BreadcrumbsDemoComponent
     },
     {
+        path: 'forms',
+        component: FormsComponent
+    },
+    {
         path: 'markdown',
         component: MarkdownComponent
     },
     {
-        path: '**',
-        redirectTo: 'breadcrumbs'
+        path: '',
+        redirectTo: 'breadcrumbs',
+        pathMatch: 'full'
     }
 ];
 

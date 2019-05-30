@@ -6,10 +6,6 @@ const routes: Routes = [
         path: '',
         redirectTo: '/xss/breadcrumbs',
         pathMatch: 'full'
-    },
-    {
-        path: '**',
-        redirectTo: '/xss/breadcrumbs'
     }
 ];
 
