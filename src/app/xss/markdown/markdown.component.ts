@@ -1,7 +1,9 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ElectronService } from 'app/shared/services/electron.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { MarkdownQueryParams } from 'app/shared/models/app-routes.model';
 
+/* tslint:disable:no-trailing-spaces */
 @Component({
     selector: 'vulnerable-markdown',
     templateUrl: './markdown.component.html',
@@ -10,8 +12,7 @@ import { ElectronService } from 'app/shared/services/electron.service';
 })
 export class MarkdownComponent implements AfterViewInit {
     // Demo XXS payloads
-    // tslint:disable: no-trailing-whitespace
-    demoPayloads: string = `### Demo Markdown XSS Payloads
+    demoWeaponised: string = `### Demo Markdown XSS Payloads
 
 [Basic XSS](javascript:alert('Basic'))
 
@@ -20,13 +21,6 @@ export class MarkdownComponent implements AfterViewInit {
 [Case may bypass bad XSS filters](JaVaScRiPt:alert('CaseInsensitive'))
 
 [URL](javascript://www.google.com%0Aalert('URL'))
-`;
-
-    /**
-     * demonstrative payloads for electron exploits
-     * only loaded if running in electron mode
-     */
-    demoElectronPayloads: string = `
 
 ### Electron Remote Code Execution Demo
 
@@ -42,18 +36,70 @@ export class MarkdownComponent implements AfterViewInit {
 
 `;
 
-    // Form controlling the markdown state
+    /**
+     * demo with no exploits, just regular md
+     */
+    demoNotWeaponised: string = `# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+
+## Styles
+
+Emphasis, aka italics, with *asterisks* or _underscores_.
+
+Strong emphasis, aka bold, with **asterisks** or __underscores__.
+
+Combined emphasis with **asterisks and _underscores_**.
+
+Strikethrough uses two tildes. ~~Scratch this.~~
+
+## Links and images
+
+[I'm an inline-style link](https://www.google.com)
+
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+`;
+
+    /**
+     * form controlling the markdown state
+     */
     markdownForm: FormGroup = new FormGroup({
-        markdownTextarea: new FormControl(this.demoPayloads)
+        markdownTextarea: new FormControl()
     });
 
-    constructor(public electronService: ElectronService, private readonly _ref: ChangeDetectorRef) {}
+    /**
+     * current payload loaded into markdown form
+     */
+    activatedPayload: string;
+
+    constructor(private readonly activatedRoute: ActivatedRoute, private readonly cdRef: ChangeDetectorRef) {}
 
     ngAfterViewInit(): void {
-        if (this.electronService.isElectron()) {
-            this.demoPayloads = this.demoPayloads + this.demoElectronPayloads;
-        }
-        this.markdownForm.controls.markdownTextarea.setValue(this.demoPayloads);
-        this._ref.detectChanges();
+        this.activatedRoute.queryParams.subscribe((params: Params) => {
+            switch (params.demo) {
+                case MarkdownQueryParams.CLEAN: {
+                    this.activatedPayload = '';
+                    break;
+                }
+                case MarkdownQueryParams.NOT_WEAPONISED: {
+                    this.activatedPayload = this.demoNotWeaponised;
+                    break;
+                }
+                case MarkdownQueryParams.WEAPONISED: {
+                    this.activatedPayload = this.demoWeaponised;
+                    break;
+                }
+                default: {
+                    this.activatedPayload = '';
+                }
+            }
+            // patch markdown into the form
+            this.markdownForm.controls.markdownTextarea.setValue(this.activatedPayload);
+            this.cdRef.detectChanges();
+        });
     }
 }

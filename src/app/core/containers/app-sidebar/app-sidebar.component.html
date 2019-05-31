@@ -6,14 +6,14 @@
         <ul class="nav-list">
             <li><a class="nav-link" [routerLink]="ROUTE_BREADCRUMBS">Breadcrumbs</a></li>
             <li><a class="nav-link" [routerLink]="ROUTE_BREADCRUMBS_XSS">Breadcrumbs XSS</a></li>
-            <li><a class="nav-link" routerLink="/xss/forms">Form</a></li>
-            <li><a class="nav-link" routerLink="/xss/markdown">Markdown</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_FORMS">Form</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_MARKDOWN" [queryParams]="PARAM_MARKDOWN_CLEAN">Markdown</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_MARKDOWN" [queryParams]="PARAM_MARKDOWN_NOT_WEAPONISED">Markdown Demo</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_MARKDOWN" [queryParams]="PARAM_MARKDOWN_WEAPONISED">Markdown XSS</a></li>
 
             <!-- electron only exploits-->
-            <ng-container *ngIf="electronService.isElectron()">
-                <li><a class="nav-link" [routerLink]="ROUTE_BREADCRUMBS_RCE_ELECTRON_DIR">Electron RCE - dir</a></li>
-                <li><a class="nav-link" [routerLink]="ROUTE_BREADCRUMBS_RCE_ELECTRON_SHELL">Electron RCE - shell</a></li>
-            </ng-container>
+            <li><a class="nav-link" [routerLink]="ROUTE_BREADCRUMBS_RCE_ELECTRON_DIR">Electron RCE - dir</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_BREADCRUMBS_RCE_ELECTRON_SHELL">Electron RCE - shell</a></li>
         </ul>
     </section>
 
@@ -23,17 +23,17 @@
         <label for="nav-xss">SQL Injection</label>
         <ul class="nav-list">
             <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY">Easy</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_101">Easy - 101</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_VERSION">Easy - SQL Version</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_ACCOUNTS">Easy - Accounts</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_SHELL_SHOW_ADVANCED">Easy - Get Shell 1</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_SHELL_RECONFIGURE">Easy - Get Shell 2</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_XP_CMDSHELL">Easy - Get Shell 3</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_SHELL_RECONFIGURE">Easy - Get Shell 4</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_XP_CMDSHELL_WHOAMI">Easy - whoami</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_XP_CMDSHELL_IPCONFIG">Easy - ipconfig</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_XP_CMDSHELL_SET">Easy - set</a></li>
-            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="SQLI_USER_XP_CMDSHELL_SHELL">Easy - Reverse TCP Shell</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_101">Easy - 101</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_VERSION">Easy - SQL Version</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_ACCOUNTS">Easy - Accounts</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_SHELL_SHOW_ADVANCED">Easy - Get Shell 1</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_SHELL_RECONFIGURE">Easy - Get Shell 2</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_XP_CMDSHELL">Easy - Get Shell 3</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_SHELL_RECONFIGURE">Easy - Get Shell 4</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_XP_CMDSHELL_WHOAMI">Easy - whoami</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_XP_CMDSHELL_IPCONFIG">Easy - ipconfig</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_XP_CMDSHELL_SET">Easy - set</a></li>
+            <li><a class="nav-link" [routerLink]="ROUTE_SQLI_EASY" [queryParams]="PARAM_SQLI_USER_XP_CMDSHELL_SHELL">Easy - Reverse TCP Shell</a></li>
         </ul>
     </section>
 </section>
