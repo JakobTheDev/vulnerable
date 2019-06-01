@@ -1,29 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { XssRoutes } from 'app/shared/models/app-routes.model';
 import { BreadcrumbsDemoComponent } from 'app/xss/breadcrumbs-demo/breadcrumbs-demo.component';
+import { ElectronComponent } from 'app/xss/electron/electron.component';
 import { FormsComponent } from 'app/xss/forms/forms.component';
 import { MarkdownComponent } from 'app/xss/markdown/markdown.component';
 
 const routes: Routes = [
     {
-        path: 'breadcrumbs',
+        path: XssRoutes.BREADCRUMBS,
         component: BreadcrumbsDemoComponent
     },
     {
-        path: 'breadcrumbs/:payload',
+        path: `${XssRoutes.BREADCRUMBS}/:payload`,
         component: BreadcrumbsDemoComponent
     },
     {
-        path: 'forms',
+        path: `${XssRoutes.ELECTRON}/:payload`,
+        component: ElectronComponent
+    },
+    {
+        path: XssRoutes.FORMS,
         component: FormsComponent
     },
     {
-        path: 'markdown',
+        path: XssRoutes.MARKDOWN,
         component: MarkdownComponent
     },
     {
         path: '',
-        redirectTo: 'breadcrumbs',
+        redirectTo: XssRoutes.BREADCRUMBS,
         pathMatch: 'full'
     }
 ];

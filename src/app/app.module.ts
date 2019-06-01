@@ -8,6 +8,7 @@ import { AppRoutingModule } from 'app/app-routing.module';
 import { AppSidebarComponent } from 'app/core/containers/app-sidebar/app-sidebar.component';
 import { AppComponent } from 'app/core/containers/app/app.component';
 import { ElectronService } from 'app/shared/services/electron.service';
+import { CookieService } from 'ngx-cookie-service';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -40,7 +41,7 @@ import { SharedModule } from './shared/shared.module';
         }),
         CoreModule
     ],
-    providers: [ElectronService],
+    providers: [CookieService, ElectronService],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

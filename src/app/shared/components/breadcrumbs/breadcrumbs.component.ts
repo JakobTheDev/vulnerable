@@ -19,7 +19,7 @@ export class BreadcrumbsComponent implements OnInit {
      */
     urlSegments: Array<SafeHtml>;
 
-    constructor(private readonly domSanitizer: DomSanitizer, private readonly cdRef: ChangeDetectorRef, private readonly activatedRoute: ActivatedRoute, private readonly router: Router) {}
+    constructor(private readonly domSanitizer: DomSanitizer, private readonly cdRef: ChangeDetectorRef, private readonly router: Router) {}
 
     ngOnInit(): void {
         this.router.events.subscribe(
