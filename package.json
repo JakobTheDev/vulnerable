@@ -126,6 +126,7 @@
         }
     },
     "dependencies": {
+        "ngx-cookie-service": "^2.2.0",
         "prettier": "^1.17.1"
     }
 }

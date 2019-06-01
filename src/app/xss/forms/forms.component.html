@@ -1,3 +1,65 @@
-<p>
-    form works!
-</p>
+<div class="clr-row">
+    <!-- Left column -->
+    <div class="clr-col-6">
+        <!-- Heading -->
+        <div class="clr-row">
+            <div class="clr-col">
+                <h2>Forms Demo</h2>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form [formGroup]="profileForm" class="clr-form clr-form-horizontal">
+            <!-- Name -->
+            <div class="clr-form-control clr-row">
+                <label for="name" class="clr-control-label clr-col-md-3">Name</label>
+                <div class="clr-control-container clr-col-12 clr-col-md-9">
+                    <div class="clr-input-wrapper">
+                        <input type="text" id="name" formControlName="name" class="clr-input" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bio -->
+            <div class="clr-form-control clr-row">
+                <label for="bio" class="clr-control-label clr-col-md-3">Bio</label>
+                <div class="clr-control-container clr-col-12 clr-col-md-9">
+                    <textarea formControlName="bio" rows="15"></textarea>
+                </div>
+            </div>
+
+            <!-- Save -->
+            <div class="clr-form-control clr-row">
+                <button class="btn btn-primary" (click)="onSave()">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Right column -->
+    <div class="clr-col-6">
+        <div class="clr-row clr-justify-content-center">
+            <div class="clr-col-12 profile-wrapper">
+                <!-- User avatar -->
+                <div class="clr-row clr-justify-content-center">
+                    <div class="clr-col-auto">
+                        <clr-icon shape="user" size="144"></clr-icon>
+                    </div>
+                </div>
+
+                <!-- Name -->
+                <div class="clr-form-control clr-row clr-align-items-center">
+                    <div class="clr-col-auto">
+                        <h3 [innerHtml]="name">{{ name }}</h3>
+                    </div>
+                </div>
+
+                <!-- Name -->
+                <div class="clr-form-control clr-row clr-align-items-center">
+                    <div class="clr-col-8 bio">
+                        <p [innerHtml]="bio">{{ bio }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
