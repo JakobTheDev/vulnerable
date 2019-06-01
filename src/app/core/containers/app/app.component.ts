@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ElectronService } from 'app/shared/services/electron.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
     selector: 'vulnerable-app',
@@ -7,7 +8,24 @@ import { ElectronService } from 'app/shared/services/electron.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    constructor(public electronService: ElectronService) {}
+    SECRET_SESSION_TOKEN: string = 'SESSION_TOKEN';
+    SECRET_SESSION_USERNAME: string = 'USERNAME';
+    SECRET_SESSION_PASSWORD: string = 'PASSWORD';
+
+    constructor(private readonly cookieService: CookieService, public electronService: ElectronService) {
+        // set up secrets for demos
+        cookieService.set(this.SECRET_SESSION_TOKEN, 'WHATEVER');
+        cookieService.set(this.SECRET_SESSION_USERNAME, 'WHATEVER');
+        cookieService.set(this.SECRET_SESSION_PASSWORD, 'WHATEVER');
+
+        localStorage.setItem(this.SECRET_SESSION_TOKEN, 'WHATEVER');
+        localStorage.setItem(this.SECRET_SESSION_USERNAME, 'WHATEVER');
+        localStorage.setItem(this.SECRET_SESSION_PASSWORD, 'WHATEVER');
+
+        sessionStorage.setItem(this.SECRET_SESSION_TOKEN, 'WHATEVER');
+        sessionStorage.setItem(this.SECRET_SESSION_USERNAME, 'WHATEVER');
+        sessionStorage.setItem(this.SECRET_SESSION_PASSWORD, 'WHATEVER');
+    }
 
     onClickMinimise(): void {
         this.electronService.remote.getCurrentWindow().minimize();
