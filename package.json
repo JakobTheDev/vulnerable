@@ -95,7 +95,7 @@
         "zone.js": "0.8.29"
     },
     "lint-staged": {
-        "*.{json,js,html}": [
+        "src/*.{json,js,html}": [
             "prettier --write",
             "git add"
         ],

