@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationEnd, Router, UrlSegment } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
     selector: 'vulnerable-breadcrumbs',
@@ -26,7 +26,7 @@ export class BreadcrumbsComponent implements OnInit {
             (event: any): void => {
                 // On router chage, update breadcrumbs
                 if (event instanceof NavigationEnd) {
-                    this.urlSegments = event.url
+                    this.urlSegments = event.urlAfterRedirects
                         // split url into segments
                         .split('/')
                         // remove any query parameters
