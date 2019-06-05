@@ -1,0 +1,17 @@
+{
+    "lang": "en",
+    "dir": "ltr",
+    "name": "Vulnerable",
+    "description": "The anti-styleguide for secure web applications.",
+    "short_name": "Vulnerable",
+    "icons": [
+        {
+            "src": "assets/logo.png",
+            "sizes": "512x512"
+        }
+    ],
+    "scope": "/",
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "orientation": "portrait"
+}
