@@ -22,7 +22,8 @@
               "src/favicon.png",
               "src/favicon.icns",
               "src/favicon.256x256.png",
-              "src/favicon.512x512.png"
+              "src/favicon.512x512.png",
+              "src/manifest.json"
             ],
             "styles": [
               "node_modules/prismjs/themes/prism-okaidia.css",
