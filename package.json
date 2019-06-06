@@ -47,6 +47,7 @@
         "@angular/platform-browser": "7.2.7",
         "@angular/platform-browser-dynamic": "7.2.7",
         "@angular/router": "7.2.7",
+        "@angular/service-worker": "7.2.7",
         "@clr/angular": "^0.13.6",
         "@clr/icons": "^0.13.6",
         "@clr/ui": "^1.0.0",
@@ -126,6 +127,7 @@
         }
     },
     "dependencies": {
+        "@angular/pwa": "^0.12.4",
         "ngx-cookie-service": "^2.2.0",
         "prettier": "^1.17.1"
     }

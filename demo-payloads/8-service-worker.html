@@ -1,0 +1,8 @@
+<img src="https://jaydata.org/wp-content/uploads/2016/09/html5-localstorage-2.png" onload="javascript:
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+           .register('http://localhost:80/sw.js')
+           .then(function() { console.log('Service Worker Registered');
+        });
+    }
+"/>
