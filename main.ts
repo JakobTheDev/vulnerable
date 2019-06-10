@@ -12,6 +12,7 @@ let win: BrowserWindow;
  */
 const args: Array<string> = process.argv.slice(1);
 const serve: boolean = args.some((arg: string) => arg === '--serve');
+const enableDevtools: boolean = args.some((arg: string) => arg === '--devtools');
 
 /**
  * construct the electron window
@@ -46,6 +47,10 @@ function createWindow(): void {
                 slashes: true
             })
         );
+    }
+
+    if (enableDevtools) {
+        win.webContents.openDevTools();
     }
 
     // Emitted when the window is closed.
