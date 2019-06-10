@@ -17,18 +17,21 @@
         "!_config.yml",
         "!karma.conf.js",
         "!tsconfig.json",
-        "!tslint.json"
+        "!tslint.json",
+        "!manifest.json",
+        "!ngsw-config.json",
+        "!ngsw.json"
     ],
     "win": {
-        "icon": "dist",
+        "icon": "dist/favicon.ico",
         "target": ["portable"]
     },
     "mac": {
-        "icon": "dist",
+        "icon": "dist/favicon.ico",
         "target": ["dmg"]
     },
     "linux": {
-        "icon": "dist",
+        "icon": "dist/favicon.ico",
         "target": ["AppImage"]
     }
 }
