@@ -128,7 +128,7 @@
         }
     },
     "dependencies": {
-        "@angular/pwa": "^0.12.4",
+        "@angular/pwa": "^0.803.29",
         "ngx-cookie-service": "^2.2.0",
         "prettier": "^1.17.1"
     }
